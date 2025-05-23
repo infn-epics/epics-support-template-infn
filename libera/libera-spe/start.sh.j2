@@ -4,14 +4,6 @@ kill -9 "$(pidof procServ)" 2>/dev/null >/dev/null
 /etc/init.d/libera-ioc stop
 
 
-# If you have more than one ethernet interface you must specify
-# the following environment variable. We do not want the CA server
-# responding multiple times!!
-# export EPICS_CAS_INTF_ADDR_LIST=<IP number of your primary network card>
-# Please consult the EPICS software manager for the proper command # here:
-# --- OPTIONAL ---
-# export EPICS_CAS_INTF_ADDR_LIST=172.31.75.3
-
 # Libera EPICS IOC top install folder
 TOP=$__IOC_TOP__
 PROCSERV=/usr/bin/procServ
@@ -41,7 +33,7 @@ fi
 # the IOC name at this point, consult EPICS documentation for more information.
 IOCNAME={{iocprefix}}
 
-echo " -> IOC name $IOCNAME"
+echo " -> IOC name {{iocname}}"
 
 # Start the caRepeater in the background
 if [ -f /opt/epics/base/bin/caRepeater ]; then 

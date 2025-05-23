@@ -1,6 +1,8 @@
 #!/bin/bash
 mount -o remount ,rw /
+
+{% set ntp1 = "ntp1.lnf.infn.it" %}
 /etc/init.d/ntp stop
-ntpdate ntp1.lnf.infn.it
+ntpdate {{ ntp1 }}
 /etc/init.d/ntp start
 ./st.cmd
