@@ -37,7 +37,8 @@ dbLoadTemplate("libera.substitutions")
 cd ${TOP}
 iocInit()
 {%- for param in iocinit %}
-    dbpf("{{iocprefix}}:{{param.name}}","{{param.value}}")
+dbpf("{{iocprefix}}:{{param.name}}","{{param.value}}")
 {%- endfor %}
-dbl
+
 dbl > {{config_dir}}/pvlist.txt
+dbl

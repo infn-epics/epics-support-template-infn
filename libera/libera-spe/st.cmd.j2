@@ -117,5 +117,20 @@ asynSetTraceIOMask("libera-platform", 0, 0)
 # Save list of PVs to a file
 
 iocInit()
-dbl
+{%- for dev in devices %}
+{%- set prefix = iocprefix %}
+{% if dev.prefix is defined %}
+{%- set prefix = dev.prefix %}
+{%- endif %}
+
+{%- if dev.iocinit is sequence %}
+###### initializations {{dev.name}}
+{%- for param in dev.iocinit %}
+dbpf ("{{prefix}}:{{dev.name}}:{{param.name}}","{{param.value}}")
+{%- endfor %}
+######
+{%- endif %}
+{%- endfor %}
+
 dbl > {{config_dir}}/pvlist.txt
+dbl
