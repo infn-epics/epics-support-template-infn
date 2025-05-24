@@ -128,8 +128,7 @@ dbpf ("{{prefix}}:{{dev.name}}:{{param.name}}","{{param.value}}")
 {%- endif %}
 {%- endfor %}
 dbl
-# Save list of PVs to a file
-dbl("*") > {{config_dir}}/pvlist.txt
+dbl > {{config_dir}}/pvlist.txt
 # end Save
 
 

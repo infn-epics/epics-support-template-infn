@@ -39,5 +39,5 @@ iocInit()
 {%- for param in iocinit %}
     dbpf("{{iocprefix}}:{{param.name}}","{{param.value}}")
 {%- endfor %}
-
-dbl("*") > {{config_dir}}/pvlist.txt
+dbl
+dbl > {{config_dir}}/pvlist.txt
