@@ -1,4 +1,7 @@
 #!/opt/epics-libera/bin/linux-arm/libera
+{#- Initialize buffer variables -#}
+{% set FA_BUFFER = 8192 %}
+{% set ADC_BUFFER = 1024 %}
 
 epicsEnvSet(ARCH,"linux-arm")
 epicsEnvSet(IOC,"{{iocname}}")
@@ -15,11 +18,11 @@ liberaSupport_registerRecordDeviceDriver(pdbbase)
 # Environment port
 liberaInit("ENV","ENV", "0", "0", "0", "0", "1")
 
-# Fast Application port reading/writing 8192 samples
-liberaInit("FA","FA", "0", "8192", "0", "0", "1")
+# Fast Application port reading/writing FA_BUFFER samples
+liberaInit("FA","FA", "0", "{{ FA_BUFFER }}", "0", "0", "1")
 
-# ADC port reading 1024 samples
-liberaInit("ADC","ADC", "0", "1024", "0", "0", "1")
+# ADC port reading ADC_BUFFER samples
+liberaInit("ADC","ADC", "0", "{{ ADC_BUFFER }}", "0", "0", "1")
 
 # Slow Acquisition port
 liberaInit("SA","SA", "0", "0", "0", "0", "1")
@@ -37,4 +40,4 @@ iocInit()
     dbpf("{{iocprefix}}:{{param.name}}","{{param.value}}")
 {%- endfor %}
 
-dbl("*") > {{data_config}}/pvlist.txt
+dbl("*") > {{config_dir}}/pvlist.txt
