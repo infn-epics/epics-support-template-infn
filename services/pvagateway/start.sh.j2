@@ -1,0 +1,43 @@
+#!/bin/sh
+name=`hostname`
+echo "Starting PVA Gateway ($name)"
+# -debug 1
+CLIENT_NAME="$name"
+unset EPICS_CA_ADDR_LIST
+unset EPICS_PVA_ADDR_LIST
+
+{% if addr_list is defined %}
+export EPICS_PVA_NAME_SERVERS="{{ addr_list | join(' ') }}"
+{% endif %}
+
+#export EPICS_PVA_ADDR_LIST $EPICS_CA_ADDR_LIST
+# Generate JSON content
+JSON_CONTENT=$(cat <<EOF
+{
+    "version": 2,
+    "clients":[
+         {
+            "name":"pvaservers",
+            "addrlist": "$EPICS_PVA_NAME_SERVERS",
+            "autoaddrlist":false
+        }
+    ],
+    "servers": [
+        {
+            "name": "localhost",
+            "clients": ["pvaservers"],
+            "addrlist": "",
+            "autoaddrlist": false,
+            "statusprefix": "GW:STS:"
+        }
+    ]
+}
+EOF
+)
+
+# Output the JSON content to a file
+echo "$JSON_CONTENT" > gateway_config.json
+
+echo "Generated gateway_config.json:"
+
+python3 -m p4p.gw -v gateway_config.json
