@@ -26,6 +26,6 @@ sleep 1
 options="-connect_timeout $CONNECT_TIMEOUT -inactive_timeout $INACTIVE_TIMEOUT -dead_timeout $DEAD_TIMEOUT -disconnect_timeout $DISCONNECT_TIMEOUT -reconnect_inhibit $RECONNECT_INHIBIT"
 echo "Gateway options: $options"
 
-/epics/ca-gateway/bin/linux-x86_64/gateway -cip "$EPICS_CA_ADDR_LIST" \
-  -pvlist /epics/ca-gateway/configure/pvlist $options -sip 0.0.0.0 \
-  -access /epics/ca-gateway/configure/gwaccess.access
+/epics/support/ca-gateway/bin/linux-x86_64/gateway -cip "$EPICS_CA_ADDR_LIST" \
+  -pvlist pvlist $options -sip 0.0.0.0 \
+  -access gwaccess.access
