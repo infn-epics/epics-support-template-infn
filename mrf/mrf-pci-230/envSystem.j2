@@ -2,12 +2,12 @@
 ## Build provided environment variables    ##
 #############################################
 
-epicsEnvSet("IOCMODULE", "elinp-gp09-ioc01")
+epicsEnvSet("IOCMODULE", "{{iocname}}")
 epicsEnvSet("IOCNAME", "{{iocname}}")
 epicsEnvSet("NETIF", "eth0")
 
 epicsEnvSet("IOCSH_PS1","${IOCNAME}> ")
 
 epicsEnvSet("AUTOSAVE_SYSM_PV_PREFIX","$(IOC)")
-epicsEnvSet("EPICS_AUTOSAVE_VAR", "__AUTOSAVE_DIR__")
+epicsEnvSet("EPICS_AUTOSAVE_VAR", "{{autosave_dir}}")
 epicsEnvSet("EPICS_IOC_LOG_INET", "csservices")

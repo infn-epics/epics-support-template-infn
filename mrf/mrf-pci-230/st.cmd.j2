@@ -1,16 +1,14 @@
 #!{{iocbin}}
-# elinp_gp09_ioc01
-
 < envPaths
 < envSystem
 < envUser
 
 cd "${TOP}"
-
-#############################################
-## Register all support components         ##
-#############################################
 dbLoadDatabase "dbd/mrf230.dbd"
+{%- if devices | selectattr("devtype", "equalto", "m9210") | list | length > 0 %}
+dbLoadDatabase "dbd/mrfkey.dbd"
+{%- endif %}
+
 {{iocfunc}}_registerRecordDeviceDriver pdbbase
 
 
@@ -18,21 +16,17 @@ dbLoadDatabase "dbd/mrf230.dbd"
 ## HW setup                                ##
 #############################################
 
-
-
 {%- for dev in devices %}
 {%- set prefix = iocprefix %}
 {% if dev.prefix is defined %}
 {%- set prefix = dev.prefix %}
 {%- endif %}
-## device TYPE {{dev.devtype}} ### 
-## {{dev.name}} ##
+## device TYPE {{dev.devtype}} : {{dev.name}} ##
 {%- if dev.devtype == "evr230" %}
 mrmEvrSetupPCI("{{dev.name}}",0,{{dev.bus}},{{dev.slot}},{{dev.func}})
 dbLoadRecords("elinp-evr.db", "SYS={{prefix}}, EVR={{dev.name}},EVT=0")
 dbLoadRecords("elinp-evrsoft.db", "SYS={{prefix}}, EVR={{dev.name}}, EVT=0, CODE=0")
 {%- endif %}
-
 {%- if dev.devtype == "evg230" %}
 mrmEvgSetupPCI("{{dev.name}}",{{dev.bus}},{{dev.slot}},{{dev.func}})
 dbLoadRecords("elinp-evg.db", "SYS={{prefix}}, EVG={{dev.name}}")
@@ -51,18 +45,6 @@ dbLoadRecords "db/xct-stat.template", "PREFIX={{prefix}}:{{dev.name}}, NELM={{de
 ## DB Loading                              ##
 #############################################
 #dbLoadTemplate("${TOP}/db/$(IOCMODULE).substitutions")
-
-## Timing DB (EVG)
-
-
-
-#############################################
-## IOC and System Monitor                  ##
-#############################################
-
-# dbLoadRecords("${ELINPIOCMON}/db/elinp-iocmon.db", "P=${IOCNAME}")
-# dbLoadRecords("${ELINPSYSMON}/db/elinp-sysmon.db", "P=${IOCNAME},NETIF=${NETIF}")
-
 
 #############################################
 ## Auto Save/Restore                       ##
@@ -88,10 +70,6 @@ iocInit
 #############################################
 ## Timing configuration                    ##
 #############################################
-
-
-# OR load EVG config with internal clock
-#< "${PTTS}/ioc_config/tmg-EVGinternal.cmd"
 
 {%- for dev in devices %}
 {%- set prefix = iocprefix %}
