@@ -1,6 +1,3 @@
-include "db/evrx_triggers.db"
-include "db/evrx_events.db"
-
 
 record(libera, "$(P):$(B):rtc:t1:in_function") 
 {
@@ -16,9 +13,20 @@ record(libera, "$(P):$(B):clock_info:adc_frequency")
 {
     info(MCII,  "mcii://$(D)/boards.$(MB).clock_info.adc_frequency")
 }
+
+record(libera, "$(P):$(B):events:mc:count") 
+{
+    info(MCII,  "mcii://$(D)/boards.$(MB).events.mc.count")
+}
+
 record(libera, "$(P):$(B):rtc:t0:in_function") 
 {
     info(MCII,  "mcii://$(D)/boards.$(MB).rtc.t0.in_function")
+}
+
+record(libera, "$(P):$(B):events:ilk:timestamp") 
+{
+    info(MCII,  "mcii://$(D)/boards.$(MB).events.interlock.timestamp")
 }
 
 record(libera, "$(P):$(B):mgt:status:rx_loss_of_sync") 
@@ -31,9 +39,24 @@ record(libera, "$(P):$(B):rtc:t2:code")
     info(MCII,  "mcii://$(D)/boards.$(MB).rtc.t2.code")
 }
 
+record(libera, "$(P):$(B):events:mc:timestamp") 
+{
+    info(MCII,  "mcii://$(D)/boards.$(MB).events.mc.timestamp")
+}
+
+record(libera, "$(P):$(B):events:t1:timestamp") 
+{
+    info(MCII,  "mcii://$(D)/boards.$(MB).events.t1.timestamp")
+}
+
 record(libera, "$(P):$(B):mgt:status:tx_buf") 
 {
     info(MCII,  "mcii://$(D)/boards.$(MB).mgt.status.tx_buf")
+}
+
+record(libera, "$(P):$(B):triggers:t0:source") 
+{
+    info(MCII,  "mcii://$(D)/boards.$(MB).triggers.t0.source")
 }
 
 record(libera, "$(P):$(B):info:customer") 
@@ -46,6 +69,26 @@ record(libera, "$(P):$(B):rtc:mgt_out")
     info(MCII,  "mcii://$(D)/boards.$(MB).rtc.mgt_out")
 }
 
+record(libera, "$(P):$(B):triggers:t1:code") 
+{
+    info(MCII,  "mcii://$(D)/boards.$(MB).triggers.t1.code")
+}
+
+record(libera, "$(P):$(B):triggers:t0:name") 
+{
+    info(MCII,  "mcii://$(D)/boards.$(MB).triggers.t0.name")
+}
+
+record(libera, "$(P):$(B):triggers:t2:ign_count") 
+{
+    info(MCII,  "mcii://$(D)/boards.$(MB).triggers.t2.ignored_counter")
+}
+
+record(libera, "$(P):$(B):triggers:t2:source") 
+{
+    info(MCII,  "mcii://$(D)/boards.$(MB).triggers.t2.source")
+}
+
 record(libera, "$(P):$(B):mgt:ctrl:tx_power_down") 
 {
     info(MCII,  "mcii://$(D)/boards.$(MB).mgt.ctrl.tx_power_down")
@@ -56,14 +99,29 @@ record(libera, "$(P):$(B):rtc:t2:in_mask")
     info(MCII,  "mcii://$(D)/boards.$(MB).rtc.t2.in_mask")
 }
 
+record(libera, "$(P):$(B):triggers:t2:name") 
+{
+    info(MCII,  "mcii://$(D)/boards.$(MB).triggers.t2.name")
+}
+
 record(libera, "$(P):$(B):pll:vcxo_offset") 
 {
     info(MCII,  "mcii://$(D)/boards.$(MB).pll.vcxo_offset")
 }
 
+record(libera, "$(P):$(B):events:t0:timestamp") 
+{
+    info(MCII,  "mcii://$(D)/boards.$(MB).events.t0.timestamp")
+}
+
 record(libera, "$(P):$(B):sfp_freq") 
 {
     info(MCII,  "mcii://$(D)/boards.$(MB).sfp_freq")
+}
+
+record(libera, "$(P):$(B):triggers:mc:source") 
+{
+    info(MCII,  "mcii://$(D)/boards.$(MB).triggers.mc.source")
 }
 
 record(libera, "$(P):$(B):mgt:status:pll_lock") 
@@ -81,9 +139,29 @@ record(libera, "$(P):$(B):info:health_status")
     info(MCII,  "mcii://$(D)/boards.$(MB).info.health_status")
 }
 
+record(libera, "$(P):$(B):triggers:t1:name") 
+{
+    info(MCII,  "mcii://$(D)/boards.$(MB).triggers.t1.name")
+}
+
+record(libera, "$(P):$(B):triggers:mc:ext_ign_count") 
+{
+    info(MCII,  "mcii://$(D)/boards.$(MB).triggers.mc.external_ignored_counter")
+}
+
 record(libera, "$(P):$(B):clk_mgr:sc:locked") 
 {
     info(MCII,  "mcii://$(D)/boards.$(MB).clk_mgr.sc.locked")
+}
+
+record(libera, "$(P):$(B):events:t0:count") 
+{
+    info(MCII,  "mcii://$(D)/boards.$(MB).events.t0.count")
+}
+
+record(libera, "$(P):$(B):triggers:mc:ign_count") 
+{
+    info(MCII,  "mcii://$(D)/boards.$(MB).triggers.mc.ignored_counter")
 }
 
 record(libera, "$(P):$(B):mgt:ctrl:rx_power_down") 
@@ -94,6 +172,11 @@ record(libera, "$(P):$(B):mgt:ctrl:rx_power_down")
 record(libera, "$(P):$(B):rtc:stream_filter:in_function") 
 {
     info(MCII,  "mcii://$(D)/boards.$(MB).rtc.stream_filter.in_function")
+}
+
+record(libera, "$(P):$(B):triggers:t1:ign_count") 
+{
+    info(MCII,  "mcii://$(D)/boards.$(MB).triggers.t1.ignored_counter")
 }
 
 record(libera, "$(P):$(B):rtc:t0:in_mask") 
@@ -116,9 +199,24 @@ record(libera, "$(P):$(B):info:revision")
     info(MCII,  "mcii://$(D)/boards.$(MB).info.revision")
 }
 
+record(libera, "$(P):$(B):triggers:t1:source") 
+{
+    info(MCII,  "mcii://$(D)/boards.$(MB).triggers.t1.source")
+}
+
 record(libera, "$(P):$(B):pll:compensate_offset") 
 {
     info(MCII,  "mcii://$(D)/boards.$(MB).pll.compensate_offset")
+}
+
+record(libera, "$(P):$(B):triggers:t0:ext_ign_count") 
+{
+    info(MCII,  "mcii://$(D)/boards.$(MB).triggers.t0.external_ignored_counter")
+}
+
+record(libera, "$(P):$(B):events:current_time") 
+{
+    info(MCII,  "mcii://$(D)/boards.$(MB).events.current_time")
 }
 
 record(libera, "$(P):$(B):mgt:ctrl:loop") 
@@ -131,9 +229,19 @@ record(libera, "$(P):$(B):mgt:status:rx_buf")
     info(MCII,  "mcii://$(D)/boards.$(MB).mgt.status.rx_buf")
 }
 
+record(libera, "$(P):$(B):triggers:t0:code") 
+{
+    info(MCII,  "mcii://$(D)/boards.$(MB).triggers.t0.code")
+}
+
 record(libera, "$(P):$(B):rtc:decoder_switch") 
 {
     info(MCII,  "mcii://$(D)/boards.$(MB).rtc.decoder_switch")
+}
+
+record(libera, "$(P):$(B):events:t2:timestamp") 
+{
+    info(MCII,  "mcii://$(D)/boards.$(MB).events.t2.timestamp")
 }
 
 record(libera, "$(P):$(B):mgt:err:frame") 
@@ -141,9 +249,24 @@ record(libera, "$(P):$(B):mgt:err:frame")
     info(MCII,  "mcii://$(D)/boards.$(MB).mgt.err.frame")
 }
 
+record(libera, "$(P):$(B):triggers:mc:code") 
+{
+    info(MCII,  "mcii://$(D)/boards.$(MB).triggers.mc.code")
+}
+
+record(libera, "$(P):$(B):events:ilk:count") 
+{
+    info(MCII,  "mcii://$(D)/boards.$(MB).events.interlock.count")
+}
+
 record(libera, "$(P):$(B):rtc:t0:code") 
 {
     info(MCII,  "mcii://$(D)/boards.$(MB).rtc.t0.code")
+}
+
+record(libera, "$(P):$(B):triggers:mc:name") 
+{
+    info(MCII,  "mcii://$(D)/boards.$(MB).triggers.mc.name")
 }
 
 record(libera, "$(P):$(B):rtc:stream_filter:in_mask") 
@@ -154,6 +277,16 @@ record(libera, "$(P):$(B):rtc:stream_filter:in_mask")
 record(libera, "$(P):$(B):mgt:err:hard") 
 {
     info(MCII,  "mcii://$(D)/boards.$(MB).mgt.err.hard")
+}
+
+record(libera, "$(P):$(B):triggers:t2:code") 
+{
+    info(MCII,  "mcii://$(D)/boards.$(MB).triggers.t2.code")
+}
+
+record(libera, "$(P):$(B):events:t2:count") 
+{
+    info(MCII,  "mcii://$(D)/boards.$(MB).events.t2.count")
 }
 
 record(libera, "$(P):$(B):rtc:t1:in_mask") 
@@ -171,9 +304,29 @@ record(libera, "$(P):$(B):rtc:t1:code")
     info(MCII,  "mcii://$(D)/boards.$(MB).rtc.t1.code")
 }
 
+record(libera, "$(P):$(B):triggers:t0:ign_count") 
+{
+    info(MCII,  "mcii://$(D)/boards.$(MB).triggers.t0.ignored_counter")
+}
+
+record(libera, "$(P):$(B):triggers:t2:ext_ign_count") 
+{
+    info(MCII,  "mcii://$(D)/boards.$(MB).triggers.t2.external_ignored_counter")
+}
+
 record(libera, "$(P):$(B):mgt:err:soft") 
 {
     info(MCII,  "mcii://$(D)/boards.$(MB).mgt.err.soft")
+}
+
+record(libera, "$(P):$(B):events:t1:count") 
+{
+    info(MCII,  "mcii://$(D)/boards.$(MB).events.t1.count")
+}
+
+record(libera, "$(P):$(B):triggers:t1:ext_ign_count") 
+{
+    info(MCII,  "mcii://$(D)/boards.$(MB).triggers.t1.external_ignored_counter")
 }
 
 record(libera, "$(P):$(B):pll:clk_good") 
@@ -184,6 +337,11 @@ record(libera, "$(P):$(B):pll:clk_good")
 record(libera, "$(P):$(B):rtc:t2:in_function") 
 {
     info(MCII,  "mcii://$(D)/boards.$(MB).rtc.t2.in_function")
+}
+
+record(liberaSignal, "$(P):$(B):event") 
+{
+    info(MCII,  "mcii://$(D)/boards.$(MB).signals.event")
 }
 
 record(liberaSignal, "$(P):$(B):evrx") 

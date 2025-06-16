@@ -1,0 +1,70 @@
+
+record(aSub, "$(P):$(B):adc") 
+{
+     info(MCII,  "mcii://$(D)/dod/boards.$(MB).signals.adc/$(MB):10017/data/0")
+    field(INAM,  "asub_signal_init")
+    field(SNAM,  "asub_signal_process")
+    field(SCAN,  "Passive")
+    field(FTA,   "SHORT")
+    field(NOA,   "$(N)")
+    field(FTVA,  "SHORT")
+    field(NOVA,  "$(N)")
+    field(OUTA,  "")
+    field(FTVB,  "SHORT")
+    field(NOVB,  "$(N)")
+    field(OUTB,  "")
+    field(FTVC,  "SHORT")
+    field(NOVC,  "$(N)")
+    field(OUTC,  "")
+    field(FTVD,  "SHORT")
+    field(NOVD,  "$(N)")
+    field(OUTD,  "")
+}
+
+record(bo, "$(P):$(B):adc:enable") 
+{
+     info(MCII,  "mcii://$(D)/dod/boards.$(MB).signals.adc/$(MB):10017/enable/0")
+    field(OUT,   "@asyn($(D),0)$(MB):10017/enable/0")
+    field(DTYP,  "asynInt32")
+    field(SCAN,  "Passive")
+    field(FLNK,  "")
+    field(ZNAM,  "NO")
+    field(ONAM,  "YES")
+}
+
+record(mbbo, "$(P):$(B):adc:mode") 
+{
+     info(MCII,  "mcii://$(D)/dod/boards.$(MB).signals.adc/$(MB):10017/mode/0")
+    field(OUT,   "@asyn($(D),0)$(MB):10017/mode/0")
+    field(DTYP,  "asynInt32")
+    field(SCAN,  "Passive")
+    field(FLNK,  "")
+    field(ZRVL,  "10")
+    field(ZRST,  "Position")
+    field(ONVL,  "11")
+    field(ONST,  "Now")
+    field(TWVL,  "12")
+    field(TWST,  "LMT")
+    field(THVL,  "13")
+    field(THST,  "On event")
+    field(FRVL,  "14")
+    field(FRST,  "Single event")
+}
+
+record(stringout, "$(P):$(B):adc:offset") 
+{
+     info(MCII,  "mcii://$(D)/dod/boards.$(MB).signals.adc/$(MB):10017/offset/0")
+    field(OUT,   "@asyn($(D),0)$(MB):10017/offset/0")
+    field(DTYP,  "asynOctetWrite")
+    field(SCAN,  "Passive")
+    field(FLNK,  "")
+}
+
+record(stringin, "$(P):$(B):adc:mt") 
+{
+     info(MCII,  "mcii://$(D)/dod/boards.$(MB).signals.adc/$(MB):10017/mt/0")
+    field(INP,   "@asyn($(D),0)$(MB):10017/mt/0")
+    field(DTYP,  "asynOctetRead")
+    field(SCAN,  "I/O Intr")
+    field(FLNK,  "")
+}

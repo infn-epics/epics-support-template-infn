@@ -1,4 +1,4 @@
-#!/opt/libera-ioc/bin/liberaIOC
+#!{{iocbin}}
 
 # -------------------------------- HEADER -------------------------------------
 
@@ -14,7 +14,7 @@ cd ${TOP}
 
 ## Import IOC name that sets IOCNAME env variable
 # Set default IOC name (if tmp/IOCname.env not present)
-epicsEnvSet("IOCNAME","{{iocprefix}}")
+epicsEnvSet("IOCNAME","{{iocname}}")
 # Get IOC name from tmp/IOCname.env (generated from IOCname)
 
 ## Register all support components
@@ -33,18 +33,26 @@ epicsEnvSet("MCIAPP","libera-spe")
 ## Load record instances
 # Libera MCI tree support
 
-dbLoadRecords("db/spe.db",                  "P={{iocname}},D=${MCIAPP}")
+dbLoadRecords("db/spe.db",                  "P={{iocprefix}},D=${MCIAPP}")
+# dbLoadRecords("db/evrx.db",                 "P={{iocprefix}},D=${MCIAPP},MB=evrx2,B=evrx")
 
-dbLoadRecords("db/gdx.db",                  "P={{iocname}},D=${MCIAPP},MB=gdx1,B=gdx")
-dbLoadRecords("db/evrx.db",                 "P={{iocname}},D=${MCIAPP},MB=evrx2,B=evrx")
+# dbLoadRecords("db/gdx.db",                  "P={{iocprefix}},D=${MCIAPP},MB=gdx1,B=gdx")
 
-# dbLoadRecords("db/rfspe.db",                "P={{iocname}},D=${MCIAPP},MB=rfspe3,B=__BPM1__")
-# dbLoadRecords("db/rfspe.db",                "P={{iocname}},D=${MCIAPP},MB=rfspe4,B=__BPM2__")
-# dbLoadRecords("db/rfspe.db",                "P={{iocname}},D=${MCIAPP},MB=rfspe5,B=__BPM3__")
-# dbLoadRecords("db/rfspe.db",                "P={{iocname}},D=${MCIAPP},MB=rfspe6,B=__BPM4__")
+
+
+{%- for dev in devices %}
+{%- set prefix = iocprefix %}
+{% if dev.prefix is defined %}
+{%- set prefix = dev.prefix %}
+{%- endif %}
+## device TYPE {{dev.devtype}} ### 
+## {{dev.name}} ##
+dbLoadRecords("db/rfspe.db",          "D=${MCIAPP},MB=rfspe{{dev.channel}},B={{iocprefix}}:{{dev.name}}")
+dbLoadRecords("db/elinp.db",          "P={{iocprefix}},B={{iocprefix}}:{{dev.name}}")
+{%- endfor %}
 
 ## Asyn record for Libera asyn driver
-dbLoadRecords("/opt/epics/asyn/db/asynRecord.db","P={{iocname}}:,R=${MCIAPP}:asyn,PORT=${MCIAPP},ADDR=0,IMAX=100,OMAX=100")
+dbLoadRecords("/opt/epics/asyn/db/asynRecord.db","P={{iocprefix}}:,R=${MCIAPP}:asyn,PORT=${MCIAPP},ADDR=0,IMAX=100,OMAX=100")
 
 ## Configure Libera port driver
 # Several Libera base based application can be accessed by specifying Asyn
@@ -66,16 +74,17 @@ asynSetTraceIOMask("${MCIAPP}", 0, 0)
 
 # ------------------------ PLATFORM SPECIFIC ----------------------------------
 
+
+
 ## Load record instances
 # Libera MCI tree support
-dbLoadRecords("db/static.db",         "P={{iocname}},D=libera-platform")
-dbLoadRecords("db/platform.db",       "P={{iocname}},D=libera-platform")
+dbLoadRecords("db/static.db",         "P={{iocprefix}},D=libera-platform")
+dbLoadRecords("db/platform.db",       "P={{iocprefix}},D=libera-platform")
 
-dbLoadRecords("db/os_sensors.db",     "P={{iocname}},D=libera-platform,MB=os,B=os")
-dbLoadRecords("db/icb_sensors.db",    "P={{iocname}},D=libera-platform,MB=icb0,B=icb")
-dbLoadRecords("db/gdx_sensors.db",    "P={{iocname}},D=libera-platform,MB=gdx1,B=gdx")
-dbLoadRecords("db/evrx_sensors.db",   "P={{iocname}},D=libera-platform,MB=evrx2,B=evrx")
-#dbLoadRecords("db/tim_sensors.db",    "P={{iocname}},D=libera-platform,MB=tim2,B=tim")
+dbLoadRecords("db/os_sensors.db",     "P={{iocprefix}},D=libera-platform,MB=os,B=os")
+dbLoadRecords("db/icb_sensors.db",    "P={{iocprefix}},D=libera-platform,MB=icb0,B=icb")
+# dbLoadRecords("db/gdx_sensors.db",  "P={{iocprefix}},D=libera-platform,MB=gdx1,B=gdx")
+dbLoadRecords("db/evrx_sensors.db",   "P={{iocprefix}},D=libera-platform,MB=evrx2,B=evrx")
 
 {%- for dev in devices %}
 {%- set prefix = iocprefix %}
@@ -84,15 +93,13 @@ dbLoadRecords("db/evrx_sensors.db",   "P={{iocname}},D=libera-platform,MB=evrx2,
 {%- endif %}
 ## device TYPE {{dev.devtype}} ### 
 ## {{dev.name}} ##
-dbLoadRecords("db/rfspe.db",          "P={{prefix}},D=${MCIAPP},MB=rfspe{{dev.channel}},B={{dev.name}}")
-dbLoadRecords("db/rfspe_sensors.db",  "P={{prefix}},D=libera-platform,MB=rfspe{{dev.channel}},B={{dev.name}}")
+dbLoadRecords("db/rfspe_sensors.db",  "D=libera-platform,MB=rfspe{{dev.channel}},B={{iocprefix}}:{{dev.name}}")
 {%- endfor %}
-# dbLoadRecords("db/rfspe_sensors.db",  "P={{iocname}},D=libera-platform,MB=rfspe4,B=__BPM2__")
-# dbLoadRecords("db/rfspe_sensors.db",  "P={{iocname}},D=libera-platform,MB=rfspe5,B=__BPM3__")
-# dbLoadRecords("db/rfspe_sensors.db",  "P={{iocname}},D=libera-platform,MB=rfspe6,B=__BPM4__")
+
+#dbLoadRecords("db/tim_sensors.db",    "P={{iocprefix}},D=libera-platform,MB=tim2,B=tim")
 
 ## Asyn record for Libera asyn driver
-dbLoadRecords("/opt/epics/asyn/db/asynRecord.db","P={{iocname}}:,R=libera-platform:asyn,PORT=libera-platform,ADDR=0,IMAX=100,OMAX=100")
+dbLoadRecords("/opt/epics/asyn/db/asynRecord.db","P={{iocprefix}}:,R=libera-platform:asyn,PORT=libera-platform,ADDR=0,IMAX=100,OMAX=100")
 
 ## Configure Libera port driver
 # Several Libera base based application can be accessed by specifying Asyn

@@ -21,12 +21,6 @@ record(stringin, "$(P):ioc:ip:eth1")
     field(SCAN,  "Passive")
 }
 
-record(stringin, "$(P):ioc:ip:eth2") 
-{
-    field(DTYP,  "LiberaHost")
-    field(SCAN,  "Passive")
-}
-
 record(stringin, "$(P):ioc:uptime") 
 {
     field(DTYP,  "LiberaHost")

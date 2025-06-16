@@ -1,260 +1,216 @@
-record(libera, "$(P):$(B):cfg:mask:va") 
+
+record(libera, "$(P):$(B):gbe:reconnect") 
 {
-    info(MCII,  "mcii://$(D)/boards.$(MB).cfg.mask.va")
+    info(MCII,  "mcii://$(D)/boards.$(MB).gbe.reconnect")
 }
 
-record(libera, "$(P):$(B):cfg:mask:vb") 
+record(libera, "$(P):$(B):group_size") 
 {
-    info(MCII,  "mcii://$(D)/boards.$(MB).cfg.mask.vb")
+    info(MCII,  "mcii://$(D)/boards.$(MB).group_size")
 }
 
-record(libera, "$(P):$(B):cfg:mask:vc") 
+record(libera, "$(P):$(B):gbe:status") 
 {
-    info(MCII,  "mcii://$(D)/boards.$(MB).cfg.mask.vc")
+    info(MCII,  "mcii://$(D)/boards.$(MB).gbe.status")
 }
 
-record(libera, "$(P):$(B):cfg:mask:vd") 
+record(libera, "$(P):$(B):gbe:dest:mac") 
 {
-    info(MCII,  "mcii://$(D)/boards.$(MB).cfg.mask.vd")
+    info(MCII,  "mcii://$(D)/boards.$(MB).gbe.dest.mac")
 }
 
-record(libera, "$(P):$(B):cfg:mask:sum") 
+record(libera, "$(P):$(B):fofb:reconnect") 
 {
-    info(MCII,  "mcii://$(D)/boards.$(MB).cfg.mask.sum")
+    info(MCII,  "mcii://$(D)/boards.$(MB).fofb.reconnect")
 }
 
-record(libera, "$(P):$(B):cfg:mask:q") 
+record(libera, "$(P):$(B):gbe:src:mac") 
 {
-    info(MCII,  "mcii://$(D)/boards.$(MB).cfg.mask.q")
+    info(MCII,  "mcii://$(D)/boards.$(MB).gbe.src.mac")
 }
 
-record(libera, "$(P):$(B):cfg:mask:x") 
+record(libera, "$(P):$(B):fofb:pi:ki") 
 {
-    info(MCII,  "mcii://$(D)/boards.$(MB).cfg.mask.x")
+    info(MCII,  "mcii://$(D)/boards.$(MB).fofb.pi.ki")
 }
 
-record(libera, "$(P):$(B):cfg:mask:y") 
+record(libera, "$(P):$(B):fofb:pi:kp") 
 {
-    info(MCII,  "mcii://$(D)/boards.$(MB).cfg.mask.y")
+    info(MCII,  "mcii://$(D)/boards.$(MB).fofb.pi.kp")
 }
 
-record(libera, "$(P):$(B):cfg:mask:trigger_cnt") 
+record(libera, "$(P):$(B):fofb:pi:reset") 
 {
-    info(MCII,  "mcii://$(D)/boards.$(MB).cfg.mask.trigger_cnt")
+    info(MCII,  "mcii://$(D)/boards.$(MB).fofb.pi.reset")
 }
 
-record(libera, "$(P):$(B):cfg:mask:bunch_cnt") 
+record(libera, "$(P):$(B):info:customer") 
 {
-    info(MCII,  "mcii://$(D)/boards.$(MB).cfg.mask.bunch_cnt")
+    info(MCII,  "mcii://$(D)/boards.$(MB).info.customer")
 }
 
-record(libera, "$(P):$(B):cfg:mask:status") 
+record(libera, "$(P):$(B):fofb:dim:magnets") 
 {
-    info(MCII,  "mcii://$(D)/boards.$(MB).cfg.mask.status")
+    info(MCII,  "mcii://$(D)/boards.$(MB).fofb.dim.magnets")
 }
 
-record(libera, "$(P):$(B):cfg:mask:mode") 
+record(libera, "$(P):$(B):grouping:sfp:status3") 
 {
-    info(MCII,  "mcii://$(D)/boards.$(MB).cfg.mask.mode")
+    info(MCII,  "mcii://$(D)/boards.$(MB).grouping.sfp.status3")
 }
 
-record(libera, "$(P):$(B):cfg:mask:R2") 
+record(libera, "$(P):$(B):grouping:sfp:status4") 
 {
-    info(MCII,  "mcii://$(D)/boards.$(MB).cfg.mask.R2")
+    info(MCII,  "mcii://$(D)/boards.$(MB).grouping.sfp.status4")
 }
 
-record(libera, "$(P):$(B):cfg:mask:R3") 
+record(libera, "$(P):$(B):trig_delay") 
 {
-    info(MCII,  "mcii://$(D)/boards.$(MB).cfg.mask.R3")
+    info(MCII,  "mcii://$(D)/boards.$(MB).local_timing.trigger_delay")
 }
 
-record(libera, "$(P):$(B):cfg:mask:timestamp_H") 
+record(libera, "$(P):$(B):fofb:switch") 
 {
-    info(MCII,  "mcii://$(D)/boards.$(MB).cfg.mask.timestamp_H")
+    info(MCII,  "mcii://$(D)/boards.$(MB).fofb.switch")
 }
 
-record(libera, "$(P):$(B):cfg:mask:timestamp_L") 
+record(libera, "$(P):$(B):fofb:saturation:reset") 
 {
-    info(MCII,  "mcii://$(D)/boards.$(MB).cfg.mask.timestamp_L")
+    info(MCII,  "mcii://$(D)/boards.$(MB).fofb.saturation.reset")
 }
 
-record(libera, "$(P):$(B):gbe3:reconnect") 
+record(libera, "$(P):$(B):events:trigger:timestamp") 
 {
-    info(MCII,  "mcii://$(D)/boards.$(MB).gbe3.reconnect")
+    info(MCII,  "mcii://$(D)/boards.$(MB).events.trigger.timestamp")
 }
 
-record(libera, "$(P):$(B):gbe3:enable") 
+record(libera, "$(P):$(B):fofb:axis") 
 {
-    info(MCII,  "mcii://$(D)/boards.$(MB).gbe3.enable")
+    info(MCII,  "mcii://$(D)/boards.$(MB).fofb.axis")
 }
 
-record(libera, "$(P):$(B):gbe3:status") 
+record(libera, "$(P):$(B):gbe:dest:port") 
 {
-    info(MCII,  "mcii://$(D)/boards.$(MB).gbe3.status")
+    info(MCII,  "mcii://$(D)/boards.$(MB).gbe.dest.port")
 }
 
-record(libera, "$(P):$(B):gbe3:src:mac") 
+record(libera, "$(P):$(B):events:sync:count") 
 {
-    info(MCII,  "mcii://$(D)/boards.$(MB).gbe3.src.mac")
+    info(MCII,  "mcii://$(D)/boards.$(MB).events.sync.count")
 }
 
-record(libera, "$(P):$(B):gbe3:src:ip") 
+record(libera, "$(P):$(B):info:health_status") 
 {
-    info(MCII,  "mcii://$(D)/boards.$(MB).gbe3.src.ip")
+    info(MCII,  "mcii://$(D)/boards.$(MB).info.health_status")
 }
 
-record(libera, "$(P):$(B):gbe3:src:port") 
+record(libera, "$(P):$(B):grouping:timeout") 
 {
-    info(MCII,  "mcii://$(D)/boards.$(MB).gbe3.src.port")
+    info(MCII,  "mcii://$(D)/boards.$(MB).grouping.timeout")
 }
 
-record(libera, "$(P):$(B):gbe3:dest:mac") 
+record(libera, "$(P):$(B):gbe:dest:ip") 
 {
-    info(MCII,  "mcii://$(D)/boards.$(MB).gbe3.dest.mac")
+    info(MCII,  "mcii://$(D)/boards.$(MB).gbe.dest.ip")
 }
 
-record(libera, "$(P):$(B):gbe3:dest:ip") 
+record(libera, "$(P):$(B):events:ilk:timestamp") 
 {
-    info(MCII,  "mcii://$(D)/boards.$(MB).gbe3.dest.ip")
+    info(MCII,  "mcii://$(D)/boards.$(MB).events.interlock.timestamp")
 }
 
-record(libera, "$(P):$(B):gbe3:dest:port") 
+record(libera, "$(P):$(B):fofb:su") 
 {
-    info(MCII,  "mcii://$(D)/boards.$(MB).gbe3.dest.port")
+    info(MCII,  "mcii://$(D)/boards.$(MB).fofb.su")
 }
 
-record(libera, "$(P):$(B):gbe4:reconnect") 
+record(libera, "$(P):$(B):sync") 
 {
-    info(MCII,  "mcii://$(D)/boards.$(MB).gbe4.reconnect")
+    info(MCII,  "mcii://$(D)/boards.$(MB).local_timing.synchronize_lmt")
 }
 
-record(libera, "$(P):$(B):gbe4:enable") 
+record(libera, "$(P):$(B):fofb:v") 
 {
-    info(MCII,  "mcii://$(D)/boards.$(MB).gbe4.enable")
+    info(MCII,  "mcii://$(D)/boards.$(MB).fofb.v")
 }
 
-record(libera, "$(P):$(B):gbe4:status") 
+record(libera, "$(P):$(B):info:revision") 
 {
-    info(MCII,  "mcii://$(D)/boards.$(MB).gbe4.status")
+    info(MCII,  "mcii://$(D)/boards.$(MB).info.revision")
 }
 
-record(libera, "$(P):$(B):gbe4:src:mac") 
+record(libera, "$(P):$(B):gbe:enable") 
 {
-    info(MCII,  "mcii://$(D)/boards.$(MB).gbe4.src.mac")
+    info(MCII,  "mcii://$(D)/boards.$(MB).gbe.enable")
 }
 
-record(libera, "$(P):$(B):gbe4:src:ip") 
+record(libera, "$(P):$(B):events:current_time") 
 {
-    info(MCII,  "mcii://$(D)/boards.$(MB).gbe4.src.ip")
+    info(MCII,  "mcii://$(D)/boards.$(MB).events.current_time")
 }
 
-record(libera, "$(P):$(B):gbe4:src:port") 
+record(libera, "$(P):$(B):gbe:src:port") 
 {
-    info(MCII,  "mcii://$(D)/boards.$(MB).gbe4.src.port")
+    info(MCII,  "mcii://$(D)/boards.$(MB).gbe.src.port")
 }
 
-record(libera, "$(P):$(B):gbe4:dest:mac") 
+record(libera, "$(P):$(B):events:trigger:count") 
 {
-    info(MCII,  "mcii://$(D)/boards.$(MB).gbe4.dest.mac")
+    info(MCII,  "mcii://$(D)/boards.$(MB).events.trigger.count")
 }
 
-record(libera, "$(P):$(B):gbe4:dest:ip") 
+record(libera, "$(P):$(B):events:sync:timestamp") 
 {
-    info(MCII,  "mcii://$(D)/boards.$(MB).gbe4.dest.ip")
+    info(MCII,  "mcii://$(D)/boards.$(MB).events.sync.timestamp")
 }
 
-record(libera, "$(P):$(B):gbe4:dest:port") 
+record(libera, "$(P):$(B):gbe:src:ip") 
 {
-    info(MCII,  "mcii://$(D)/boards.$(MB).gbe4.dest.port")
+    info(MCII,  "mcii://$(D)/boards.$(MB).gbe.src.ip")
 }
 
-record(libera, "$(P):$(B):gbe5:reconnect") 
+record(libera, "$(P):$(B):events:ilk:count") 
 {
-    info(MCII,  "mcii://$(D)/boards.$(MB).gbe5.reconnect")
+    info(MCII,  "mcii://$(D)/boards.$(MB).events.interlock.count")
 }
 
-record(libera, "$(P):$(B):gbe5:enable") 
+record(libera, "$(P):$(B):fofb:dim:eigenmodes") 
 {
-    info(MCII,  "mcii://$(D)/boards.$(MB).gbe5.enable")
+    info(MCII,  "mcii://$(D)/boards.$(MB).fofb.dim.eigenmodes")
 }
 
-record(libera, "$(P):$(B):gbe5:status") 
+record(libera, "$(P):$(B):fofb:golden_orbit") 
 {
-    info(MCII,  "mcii://$(D)/boards.$(MB).gbe5.status")
+    info(MCII,  "mcii://$(D)/boards.$(MB).fofb.golden_orbit")
 }
 
-record(libera, "$(P):$(B):gbe5:src:mac") 
+record(libera, "$(P):$(B):sync_st_m") 
 {
-    info(MCII,  "mcii://$(D)/boards.$(MB).gbe5.src.mac")
+    info(MCII,  "mcii://$(D)/boards.$(MB).local_timing.sync_state_machine")
 }
 
-record(libera, "$(P):$(B):gbe5:src:ip") 
+record(libera, "$(P):$(B):fofb:magnet_id") 
 {
-    info(MCII,  "mcii://$(D)/boards.$(MB).gbe5.src.ip")
+    info(MCII,  "mcii://$(D)/boards.$(MB).fofb.magnet_id")
 }
 
-record(libera, "$(P):$(B):gbe5:src:port") 
+record(libera, "$(P):$(B):fofb:saturation") 
 {
-    info(MCII,  "mcii://$(D)/boards.$(MB).gbe5.src.port")
+    info(MCII,  "mcii://$(D)/boards.$(MB).fofb.saturation")
 }
 
-record(libera, "$(P):$(B):gbe5:dest:mac") 
+record(libera, "$(P):$(B):fofb:dim:bpms") 
 {
-    info(MCII,  "mcii://$(D)/boards.$(MB).gbe5.dest.mac")
+    info(MCII,  "mcii://$(D)/boards.$(MB).fofb.dim.bpms")
 }
 
-record(libera, "$(P):$(B):gbe5:dest:ip") 
+record(liberaSignal, "$(P):$(B):event") 
 {
-    info(MCII,  "mcii://$(D)/boards.$(MB).gbe5.dest.ip")
+    info(MCII,  "mcii://$(D)/boards.$(MB).signals.event")
 }
 
-record(libera, "$(P):$(B):gbe5:dest:port") 
+record(liberaSignal, "$(P):$(B):fa") 
 {
-    info(MCII,  "mcii://$(D)/boards.$(MB).gbe5.dest.port")
+    info(MCII,  "mcii://$(D)/boards.$(MB).signals.fa")
+    field(NGRP, 10000)
 }
-
-record(libera, "$(P):$(B):gbe6:reconnect") 
-{
-    info(MCII,  "mcii://$(D)/boards.$(MB).gbe6.reconnect")
-}
-
-record(libera, "$(P):$(B):gbe6:enable") 
-{
-    info(MCII,  "mcii://$(D)/boards.$(MB).gbe6.enable")
-}
-
-record(libera, "$(P):$(B):gbe6:status") 
-{
-    info(MCII,  "mcii://$(D)/boards.$(MB).gbe6.status")
-}
-
-record(libera, "$(P):$(B):gbe6:src:mac") 
-{
-    info(MCII,  "mcii://$(D)/boards.$(MB).gbe6.src.mac")
-}
-
-record(libera, "$(P):$(B):gbe6:src:ip") 
-{
-    info(MCII,  "mcii://$(D)/boards.$(MB).gbe6.src.ip")
-}
-
-record(libera, "$(P):$(B):gbe6:src:port") 
-{
-    info(MCII,  "mcii://$(D)/boards.$(MB).gbe6.src.port")
-}
-
-record(libera, "$(P):$(B):gbe6:dest:mac") 
-{
-    info(MCII,  "mcii://$(D)/boards.$(MB).gbe6.dest.mac")
-}
-
-record(libera, "$(P):$(B):gbe6:dest:ip") 
-{
-    info(MCII,  "mcii://$(D)/boards.$(MB).gbe6.dest.ip")
-}
-
-record(libera, "$(P):$(B):gbe6:dest:port") 
-{
-    info(MCII,  "mcii://$(D)/boards.$(MB).gbe6.dest.port")
-}
-
