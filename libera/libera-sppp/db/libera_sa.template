@@ -31,6 +31,7 @@ record(subArray, "$(DEVICE)SA_A_MONITOR") {
 	field(FTVL, "LONG")
 	field(FLNK, "$(DEVICE)SA_B_MONITOR PP")
 }
+alias("$(DEVICE)SA_A_MONITOR", "$(DEVICE)A")
 
 record(subArray, "$(DEVICE)SA_B_MONITOR") {
 	field(INP, "$(DEVICE)SA_ARRAY_MONITOR")
@@ -39,6 +40,7 @@ record(subArray, "$(DEVICE)SA_B_MONITOR") {
 	field(FTVL, "LONG")
 	field(FLNK, "$(DEVICE)SA_C_MONITOR PP")
 }
+alias("$(DEVICE)SA_B_MONITOR", "$(DEVICE)B")
 
 record(subArray, "$(DEVICE)SA_C_MONITOR") {
 	field(INP, "$(DEVICE)SA_ARRAY_MONITOR")
@@ -47,6 +49,7 @@ record(subArray, "$(DEVICE)SA_C_MONITOR") {
 	field(FTVL, "LONG")
 	field(FLNK, "$(DEVICE)SA_D_MONITOR PP")
 }
+alias("$(DEVICE)SA_C_MONITOR", "$(DEVICE)C")
 
 record(subArray, "$(DEVICE)SA_D_MONITOR") {
 	field(INP, "$(DEVICE)SA_ARRAY_MONITOR")
@@ -55,6 +58,7 @@ record(subArray, "$(DEVICE)SA_D_MONITOR") {
 	field(FTVL, "LONG")
 	field(FLNK, "$(DEVICE)SA_X_MONITOR PP")
 }
+alias("$(DEVICE)SA_D_MONITOR", "$(DEVICE)D")
 
 record(subArray, "$(DEVICE)SA_X_MONITOR") {
 	field(INP, "$(DEVICE)SA_ARRAY_MONITOR")
@@ -64,6 +68,7 @@ record(subArray, "$(DEVICE)SA_X_MONITOR") {
 	field(FTVL, "LONG")
 	field(FLNK, "$(DEVICE)SA_Y_MONITOR PP")
 }
+alias("$(DEVICE)SA_X_MONITOR", "$(DEVICE)X")
 
 record(subArray, "$(DEVICE)SA_Y_MONITOR") {
 	field(INP, "$(DEVICE)SA_ARRAY_MONITOR")
@@ -72,6 +77,7 @@ record(subArray, "$(DEVICE)SA_Y_MONITOR") {
 	field(FTVL, "LONG")
 	field(FLNK, "$(DEVICE)SA_Q_MONITOR PP")
 }
+alias("$(DEVICE)SA_Y_MONITOR", "$(DEVICE)Y")
 
 record(subArray, "$(DEVICE)SA_Q_MONITOR") {
 	field(INP, "$(DEVICE)SA_ARRAY_MONITOR")
@@ -80,6 +86,7 @@ record(subArray, "$(DEVICE)SA_Q_MONITOR") {
 	field(FTVL, "LONG")
 	field(FLNK, "$(DEVICE)SA_SUM_MONITOR PP")
 }
+alias("$(DEVICE)SA_Q_MONITOR", "$(DEVICE)Q")
 
 record(subArray, "$(DEVICE)SA_SUM_MONITOR") {
 	field(INP, "$(DEVICE)SA_ARRAY_MONITOR")
@@ -88,6 +95,7 @@ record(subArray, "$(DEVICE)SA_SUM_MONITOR") {
 	field(FTVL, "LONG")
 	field(FLNK, "$(DEVICE)SA_COUNTER_MONITOR PP")
 }
+alias("$(DEVICE)SA_SUM_MONITOR", "$(DEVICE)SUM")
 
 record(subArray, "$(DEVICE)SA_COUNTER_MONITOR") {
 	field(INP, "$(DEVICE)SA_ARRAY_MONITOR")
