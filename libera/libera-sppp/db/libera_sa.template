@@ -28,32 +28,60 @@ record(subArray, "$(DEVICE)SA_A_MONITOR") {
 	field(INP, "$(DEVICE)SA_ARRAY_MONITOR")
 	field(INDX, "0")
 	field(MALM, "16")
+	field(NELM, "1")
 	field(FTVL, "LONG")
 	field(FLNK, "$(DEVICE)SA_B_MONITOR PP")
+}
+
+# Forward to shorter name for EPICS 3.14 compatibility
+record(ai, "$(DEVICE)A") {
+	field(INP, "$(DEVICE)SA_A_MONITOR CP")
+	field(DESC, "Amplitude A")
 }
 
 record(subArray, "$(DEVICE)SA_B_MONITOR") {
 	field(INP, "$(DEVICE)SA_ARRAY_MONITOR")
 	field(INDX, "1")
 	field(MALM, "16")
+	field(NELM, "1")
 	field(FTVL, "LONG")
 	field(FLNK, "$(DEVICE)SA_C_MONITOR PP")
+}
+
+# Forward to shorter name for EPICS 3.14 compatibility
+record(ai, "$(DEVICE)B") {
+	field(INP, "$(DEVICE)SA_B_MONITOR CP")
+	field(DESC, "Amplitude B")
 }
 
 record(subArray, "$(DEVICE)SA_C_MONITOR") {
 	field(INP, "$(DEVICE)SA_ARRAY_MONITOR")
 	field(INDX, "2")
 	field(MALM, "16")
+	field(NELM, "1")
 	field(FTVL, "LONG")
 	field(FLNK, "$(DEVICE)SA_D_MONITOR PP")
+}
+
+# Forward to shorter name for EPICS 3.14 compatibility
+record(ai, "$(DEVICE)C") {
+	field(INP, "$(DEVICE)SA_C_MONITOR CP")
+	field(DESC, "Amplitude C")
 }
 
 record(subArray, "$(DEVICE)SA_D_MONITOR") {
 	field(INP, "$(DEVICE)SA_ARRAY_MONITOR")
 	field(INDX, "3")
 	field(MALM, "16")
+	field(NELM, "1")
 	field(FTVL, "LONG")
 	field(FLNK, "$(DEVICE)SA_X_MONITOR PP")
+}
+
+# Forward to shorter name for EPICS 3.14 compatibility
+record(ai, "$(DEVICE)D") {
+	field(INP, "$(DEVICE)SA_D_MONITOR CP")
+	field(DESC, "Amplitude D")
 }
 
 record(subArray, "$(DEVICE)SA_X_MONITOR") {
@@ -65,34 +93,62 @@ record(subArray, "$(DEVICE)SA_X_MONITOR") {
 	field(FLNK, "$(DEVICE)SA_Y_MONITOR PP")
 }
 
+# Forward to shorter name for EPICS 3.14 compatibility
+record(ai, "$(DEVICE)X") {
+	field(INP, "$(DEVICE)SA_X_MONITOR CP")
+	field(DESC, "Position X")
+}
+
 record(subArray, "$(DEVICE)SA_Y_MONITOR") {
 	field(INP, "$(DEVICE)SA_ARRAY_MONITOR")
 	field(INDX, "5")
 	field(MALM, "16")
+	field(NELM, "1")
 	field(FTVL, "LONG")
 	field(FLNK, "$(DEVICE)SA_Q_MONITOR PP")
+}
+
+# Forward to shorter name for EPICS 3.14 compatibility
+record(ai, "$(DEVICE)Y") {
+	field(INP, "$(DEVICE)SA_Y_MONITOR CP")
+	field(DESC, "Position Y")
 }
 
 record(subArray, "$(DEVICE)SA_Q_MONITOR") {
 	field(INP, "$(DEVICE)SA_ARRAY_MONITOR")
 	field(INDX, "6")
 	field(MALM, "16")
+	field(NELM, "1")
 	field(FTVL, "LONG")
 	field(FLNK, "$(DEVICE)SA_SUM_MONITOR PP")
+}
+
+# Forward to shorter name for EPICS 3.14 compatibility
+record(ai, "$(DEVICE)Q") {
+	field(INP, "$(DEVICE)SA_Q_MONITOR CP")
+	field(DESC, "Quality factor")
 }
 
 record(subArray, "$(DEVICE)SA_SUM_MONITOR") {
 	field(INP, "$(DEVICE)SA_ARRAY_MONITOR")
 	field(INDX, "7")
 	field(MALM, "16")
+	field(NELM, "1")
 	field(FTVL, "LONG")
 	field(FLNK, "$(DEVICE)SA_COUNTER_MONITOR PP")
+}
+
+# Forward to shorter name for EPICS 3.14 compatibility
+record(ai, "$(DEVICE)SUM") {
+	field(INP, "$(DEVICE)SA_SUM_MONITOR CP")
+	field(DESC, "Sum of signals")
 }
 
 record(subArray, "$(DEVICE)SA_COUNTER_MONITOR") {
 	field(INP, "$(DEVICE)SA_ARRAY_MONITOR")
 	field(INDX, "8")
 	field(MALM, "16")
+	field(NELM, "1")
 	field(FTVL, "LONG")
 	field(FLNK, "$(DEVICE)SA_STATUS_MONITOR PP")
 }
@@ -101,6 +157,7 @@ record(subArray, "$(DEVICE)SA_STATUS_MONITOR") {
 	field(INP, "$(DEVICE)SA_ARRAY_MONITOR")
 	field(INDX, "9")
 	field(MALM, "16")
+	field(NELM, "1")
 	field(FTVL, "LONG")
 	field(FLNK, "$(DEVICE)SA_FINISHED_MONITOR")
 }
