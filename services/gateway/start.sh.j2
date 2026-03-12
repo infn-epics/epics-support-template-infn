@@ -17,12 +17,6 @@ echo "Starting CA Gateway $EPICS_CA_ADDR_LIST on $EPICS_GATEWAY_ADDR_LIST ($name
 export EPICS_CAS_BEACON_ADDR_LIST=$EPICS_CA_ADDR_LIST
 export EPICS_CAS_AUTO_BEACON_ADDR_LIST=NO
 
-{% if carepeater %}
-echo "Starting caRepeater"
-/epics/epics-base/bin/linux-x86_64/caRepeater &
-sleep 1
-{% endif %}
-
 options="-connect_timeout $CONNECT_TIMEOUT -inactive_timeout $INACTIVE_TIMEOUT -dead_timeout $DEAD_TIMEOUT -disconnect_timeout $DISCONNECT_TIMEOUT -reconnect_inhibit $RECONNECT_INHIBIT"
 echo "Gateway options: $options"
 
