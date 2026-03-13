@@ -4,20 +4,29 @@ name=`hostname`
 {% if addr_list is defined %}
 export EPICS_CA_ADDR_LIST="{{ addr_list | join(' ') }}"
 {% endif %}
-export EPICS_CAS_IGNORE_ADDR_LIST="{{ ignore_addr_list | join(' ') if ignore_addr_list is defined else '' }}"
 
+{% if params is defined %}
+{% for p in params %}
+{% if p.name == 'ignore_addr_list' %}
+export EPICS_CAS_IGNORE_ADDR_LIST="{{ p.value }}"
+{% endif %}
+{% endfor %}
+options="{% for p in params %}{% if p.name != 'ignore_addr_list' %} -{{ p.name }} {{ p.value }}{% endif %}{% endfor %}"
+{% else %}
+export EPICS_CAS_IGNORE_ADDR_LIST="{{ ignore_addr_list | join(' ') if ignore_addr_list is defined else '' }}"
 CONNECT_TIMEOUT="{{ connect_timeout | default('5') }}"
 INACTIVE_TIMEOUT="{{ inactive_timeout | default('300') }}"
 DEAD_TIMEOUT="{{ dead_timeout | default('60') }}"
 DISCONNECT_TIMEOUT="{{ disconnect_timeout | default('10') }}"
 RECONNECT_INHIBIT="{{ reconnect_inhibit | default('60') }}"
+options="-connect_timeout $CONNECT_TIMEOUT -inactive_timeout $INACTIVE_TIMEOUT -dead_timeout $DEAD_TIMEOUT -disconnect_timeout $DISCONNECT_TIMEOUT -reconnect_inhibit $RECONNECT_INHIBIT"
+{% endif %}
 
 echo "Starting CA Gateway $EPICS_CA_ADDR_LIST on $EPICS_GATEWAY_ADDR_LIST ($name)"
 # -debug 1
 export EPICS_CAS_BEACON_ADDR_LIST=$EPICS_CA_ADDR_LIST
 export EPICS_CAS_AUTO_BEACON_ADDR_LIST=NO
 
-options="-connect_timeout $CONNECT_TIMEOUT -inactive_timeout $INACTIVE_TIMEOUT -dead_timeout $DEAD_TIMEOUT -disconnect_timeout $DISCONNECT_TIMEOUT -reconnect_inhibit $RECONNECT_INHIBIT"
 echo "Gateway options: $options"
 
 /epics/support/ca-gateway/bin/linux-x86_64/gateway -cip "$EPICS_CA_ADDR_LIST" \

@@ -10,6 +10,17 @@ unset EPICS_PVA_ADDR_LIST
 export EPICS_PVA_NAME_SERVERS="{{ addr_list | join(' ') }}"
 {% endif %}
 
+{% if params is defined %}
+{% for p in params %}
+{% if p.name == 'addr_list' %}
+export EPICS_PVA_NAME_SERVERS="{{ p.value }}"
+{% endif %}
+{% endfor %}
+options="{% for p in params %}{% if p.name != 'addr_list' %} -{{ p.name }} {{ p.value }}{% endif %}{% endfor %}"
+{% else %}
+options=""
+{% endif %}
+
 #export EPICS_PVA_ADDR_LIST $EPICS_CA_ADDR_LIST
 # Generate JSON content
 JSON_CONTENT=$(cat <<EOF
@@ -39,5 +50,6 @@ EOF
 echo "$JSON_CONTENT" > gateway_config.json
 
 echo "Generated gateway_config.json:"
+echo "Gateway options: $options"
 
-python3 -m p4p.gw -v gateway_config.json
+python3 -m p4p.gw $options gateway_config.json
