@@ -34,7 +34,7 @@ record(subArray, "$(DEVICE)SA_A_MONITOR") {
 }
 
 # Forward to shorter name for EPICS 3.14 compatibility
-record(ai, "$(DEVICE)A") {
+record(ai, "$(P):A") {
 	field(INP, "$(DEVICE)SA_A_MONITOR CP")
 	field(DESC, "Amplitude A")
 }
@@ -49,7 +49,7 @@ record(subArray, "$(DEVICE)SA_B_MONITOR") {
 }
 
 # Forward to shorter name for EPICS 3.14 compatibility
-record(ai, "$(DEVICE)B") {
+record(ai, "$(P):B") {
 	field(INP, "$(DEVICE)SA_B_MONITOR CP")
 	field(DESC, "Amplitude B")
 }
@@ -64,7 +64,7 @@ record(subArray, "$(DEVICE)SA_C_MONITOR") {
 }
 
 # Forward to shorter name for EPICS 3.14 compatibility
-record(ai, "$(DEVICE)C") {
+record(ai, "$(P):C") {
 	field(INP, "$(DEVICE)SA_C_MONITOR CP")
 	field(DESC, "Amplitude C")
 }
@@ -79,7 +79,7 @@ record(subArray, "$(DEVICE)SA_D_MONITOR") {
 }
 
 # Forward to shorter name for EPICS 3.14 compatibility
-record(ai, "$(DEVICE)D") {
+record(ai, "$(P):D") {
 	field(INP, "$(DEVICE)SA_D_MONITOR CP")
 	field(DESC, "Amplitude D")
 }
@@ -94,7 +94,7 @@ record(subArray, "$(DEVICE)SA_X_MONITOR") {
 }
 
 # Forward to shorter name for EPICS 3.14 compatibility
-record(ai, "$(DEVICE)X") {
+record(ai, "$(P):X") {
 	field(INP, "$(DEVICE)SA_X_MONITOR CP")
 	field(DESC, "Position X")
 }
@@ -109,7 +109,7 @@ record(subArray, "$(DEVICE)SA_Y_MONITOR") {
 }
 
 # Forward to shorter name for EPICS 3.14 compatibility
-record(ai, "$(DEVICE)Y") {
+record(ai, "$(P):Y") {
 	field(INP, "$(DEVICE)SA_Y_MONITOR CP")
 	field(DESC, "Position Y")
 }
@@ -124,7 +124,7 @@ record(subArray, "$(DEVICE)SA_Q_MONITOR") {
 }
 
 # Forward to shorter name for EPICS 3.14 compatibility
-record(ai, "$(DEVICE)Q") {
+record(ai, "$(P):Q") {
 	field(INP, "$(DEVICE)SA_Q_MONITOR CP")
 	field(DESC, "Quality factor")
 }
@@ -139,7 +139,7 @@ record(subArray, "$(DEVICE)SA_SUM_MONITOR") {
 }
 
 # Forward to shorter name for EPICS 3.14 compatibility
-record(ai, "$(DEVICE)SUM") {
+record(ai, "$(P):SUM") {
 	field(INP, "$(DEVICE)SA_SUM_MONITOR CP")
 	field(DESC, "Sum of signals")
 }

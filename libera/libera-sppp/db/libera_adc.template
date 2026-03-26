@@ -20,6 +20,11 @@ record(waveform, "$(DEVICE)ADC_A_MONITOR") {
 	field(FTVL, "LONG")
 	field(FLNK, "$(DEVICE)ADC_B_MONITOR PP")
 }
+# Forward to shorter name for EPICS 3.14 compatibility
+record(waveform, "$(P):A_RAW") {
+	field(INP, "$(DEVICE)ADC_A_MONITOR CP")
+	field(DESC, "ADC Adata")
+}
 
 record(waveform, "$(DEVICE)ADC_B_MONITOR") {
 	field(DESC, "Data for ADC B")
@@ -28,6 +33,11 @@ record(waveform, "$(DEVICE)ADC_B_MONITOR") {
 	field(NELM, "$(NELM)")
 	field(FTVL, "LONG")
 	field(FLNK, "$(DEVICE)ADC_C_MONITOR PP")
+}
+# Forward to shorter name for EPICS 3.14 compatibility
+record(waveform, "$(P):B_RAW") {
+	field(INP, "$(DEVICE)ADC_B_MONITOR CP")
+	field(DESC, "ADC B data")
 }
 
 record(waveform, "$(DEVICE)ADC_C_MONITOR") {
@@ -38,6 +48,12 @@ record(waveform, "$(DEVICE)ADC_C_MONITOR") {
 	field(FTVL, "LONG")
 	field(FLNK, "$(DEVICE)ADC_D_MONITOR PP")
 }
+# Forward to shorter name for EPICS 3.14 compatibility
+record(waveform, "$(P):C_RAW") {
+	field(INP, "$(DEVICE)ADC_C_MONITOR CP")
+	field(DESC, "ADC C data")
+}
+
 
 record(waveform, "$(DEVICE)ADC_D_MONITOR") {
 	field(DESC, "Data for ADC D")
@@ -47,6 +63,13 @@ record(waveform, "$(DEVICE)ADC_D_MONITOR") {
 	field(FTVL, "LONG")
 	field(FLNK, "$(DEVICE)ADC_FINISHED_MONITOR PP")
 }
+
+# Forward to shorter name for EPICS 3.14 compatibility
+record(waveform, "$(P):D_RAW") {
+	field(INP, "$(DEVICE)ADC_D_MONITOR CP")
+	field(DESC, "ADC D data")
+}
+
 
 record(calc, "$(DEVICE)ADC_FINISHED_MONITOR") {
 	field(CALC, "A + 1")

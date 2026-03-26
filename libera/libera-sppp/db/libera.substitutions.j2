@@ -15,13 +15,13 @@ pattern
 # ADC port database reading 1024 samples max
 file "libera_adc.template" {
 pattern
-{PORT, DEVICE, NELM}
-{ADC, {{iocprefix}}:ADC:, 1024}
+{PORT, DEVICE, NELM,P}
+{ADC, {{iocprefix}}:ADC:, 1024,{iocprefix}}
 }
 
 # Slow Acquisition port database
 file "libera_sa.template" {
 pattern
-{PORT, DEVICE}
-{SA, {{iocprefix}}:SA:}
+{PORT, DEVICE, P}
+{SA, {{iocprefix}}:SA:,{iocprefix}}
 }
