@@ -16,12 +16,12 @@ pattern
 file "libera_adc.template" {
 pattern
 {PORT, DEVICE, NELM,P}
-{ADC, {{iocprefix}}:ADC:, 1024,{iocprefix}}
+{ADC, {{iocprefix}}:ADC:, 1024,{{iocprefix}} }
 }
 
 # Slow Acquisition port database
 file "libera_sa.template" {
 pattern
 {PORT, DEVICE, P}
-{SA, {{iocprefix}}:SA:,{iocprefix}}
+{SA, {{iocprefix}}:SA: ,{{iocprefix}} }
 }
