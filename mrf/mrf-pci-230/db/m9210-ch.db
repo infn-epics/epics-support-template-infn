@@ -326,14 +326,14 @@ record(calc, "$(PREFIX,undefined):AI$(IDX):INT_DT") {
 	field(FLNK, "$(PREFIX,undefined):AI$(IDX):INT_BASE")
 }
 
-# 2. Slice dynamic pre-trigger noise baseline window (points 0 to 40)
+# 2. Slice fixed pre-pulse baseline window (points 700 to 749)
 record(subArray, "$(PREFIX,undefined):AI$(IDX):INT_BASE") {
 	field(DESC, "Slice baseline reference window")
 	field(INP,  "$(PREFIX,undefined):AI$(IDX):AVG NPP")
 	field(FTVL, "DOUBLE")
 	field(MALM, "2048")
-	field(INDX, "0")
-	field(NELM, "40")
+	field(INDX, "700")
+	field(NELM, "50")
 	field(FLNK, "$(PREFIX,undefined):AI$(IDX):INT_BASE_AVG")
 }
 
@@ -341,9 +341,9 @@ record(subArray, "$(PREFIX,undefined):AI$(IDX):INT_BASE") {
 record(compress, "$(PREFIX,undefined):AI$(IDX):INT_BASE_AVG") {
 	field(DESC, "Compute average of baseline window")
 	field(INP,  "$(PREFIX,undefined):AI$(IDX):INT_BASE NPP")
-	field(ALG,  "Average")
+	field(ALG,  "N to 1 Average")
 	field(NSAM, "1")
-	field(N,    "40")
+	field(N,    "50")
 	field(FLNK, "$(PREFIX,undefined):AI$(IDX):INT_WSIZE")
 }
 
@@ -379,7 +379,7 @@ record(calcout, "$(PREFIX,undefined):AI$(IDX):INT_PUSH_SUMN") {
 	field(DESC, "Push compression size block")
 	field(INPA, "$(PREFIX,undefined):AI$(IDX):INT_WSIZE NPP")
 	field(CALC, "A")
-	field(OUT,  "$(PREFIX,undefined):AI$(IDX):SUM_WAVE.N PP")
+	field(OUT,  "$(PREFIX,undefined):AI$(IDX):SUM_WAVE.N NPP")
 	field(FLNK, "$(PREFIX,undefined):AI$(IDX):SLICED_WAVE")
 }
 
@@ -396,7 +396,7 @@ record(subArray, "$(PREFIX,undefined):AI$(IDX):SLICED_WAVE") {
 record(compress, "$(PREFIX,undefined):AI$(IDX):SUM_WAVE") {
 	field(DESC, "Sum Waveform Area Elements")
 	field(INP,  "$(PREFIX,undefined):AI$(IDX):SLICED_WAVE NPP")
-	field(ALG,  "Average")
+	field(ALG,  "N to 1 Average")
 	field(NSAM, "1")
 	field(FLNK, "$(PREFIX,undefined):AI$(IDX):CHARGE_FINAL")
 }
@@ -408,7 +408,8 @@ record(calc, "$(PREFIX,undefined):AI$(IDX):CHARGE_FINAL") {
 	field(INPB, "$(PREFIX,undefined):AI$(IDX):INT_WSIZE NPP")
 	field(INPC, "$(PREFIX,undefined):AI$(IDX):INT_BASE_AVG NPP")
 	field(INPD, "$(PREFIX,undefined):AI$(IDX):INT_DT NPP")
-	field(CALC, "((C-A)*B)*D*1e12/50.0")
+	field(INPE, "$(PREFIX,undefined):AI$(IDX):OFS_SP NPP")
+	field(CALC, "((C+E-A)*B)*D*1e12/2.5")
 	field(EGU,  "pC")
 	field(PREC, "4")
 	field(FLNK, "$(PREFIX,undefined):AI$(IDX):INT_GRAPH_SLICE")
