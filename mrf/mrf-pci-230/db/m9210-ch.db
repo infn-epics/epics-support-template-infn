@@ -312,10 +312,12 @@ record(ao, "$(PREFIX,undefined):AI$(IDX):SET_END_IDX") {
 }
 
 record(ao, "$(PREFIX,undefined):K_OFFSET_CALC") {
-	field(DESC, "Calibration Constant factor")
-	field(VAL,  "1.0")
+	field(DESC, "Calibration constant (replaces hardcoded 2.5 in CHARGE_FINAL)")
+	field(VAL,  "2.5")
 	field(PINI, "YES")
 	field(PREC, "4")
+	field(HOPR, "100")
+	field(LOPR, "0.001")
 }
 
 # 1. Direct hardware Sampling Rate Clock Delta Parser (Calculates dt)
@@ -409,7 +411,8 @@ record(calc, "$(PREFIX,undefined):AI$(IDX):CHARGE_FINAL") {
 	field(INPC, "$(PREFIX,undefined):AI$(IDX):INT_BASE_AVG NPP")
 	field(INPD, "$(PREFIX,undefined):AI$(IDX):INT_DT NPP")
 	field(INPE, "$(PREFIX,undefined):AI$(IDX):OFS_SP NPP")
-	field(CALC, "((C+E-A)*B)*D*1e12/2.5")
+	field(INPF, "$(PREFIX,undefined):K_OFFSET_CALC NPP")
+	field(CALC, "((C+E-A)*B)*D*1e12/F")
 	field(EGU,  "pC")
 	field(PREC, "4")
 	field(FLNK, "$(PREFIX,undefined):AI$(IDX):INT_GRAPH_SLICE")
