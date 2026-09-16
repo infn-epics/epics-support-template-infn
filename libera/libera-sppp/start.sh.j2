@@ -1,13 +1,11 @@
 #!/bin/sh
 mount -o remount,rw /
 
-{% set ntp1 = "193.206.84.121" %}
-{% set ntp2 = "193.206.84.122" %}
-{% set ntp3 = "193.206.84.123" %}
+{% set ntp_srv = ntp_servers | default(["193.206.84.121", "193.206.84.122", "193.206.84.123"]) %}
 
-echo "server {{ ntp1 }}" > /etc/openntpd/ntpd.conf
-echo "server {{ ntp2 }}" >> /etc/openntpd/ntpd.conf
-echo "server {{ ntp3 }}" >> /etc/openntpd/ntpd.conf
+{%- for srv in ntp_srv %}
+echo "server {{ srv }}" {% if loop.first %}>{% else %}>>{% endif %} /etc/openntpd/ntpd.conf
+{%- endfor %}
 
 ntpd -s
 /etc/init.d/libera restart

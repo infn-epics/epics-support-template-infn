@@ -1,5 +1,5 @@
 #!/bin/bash
-mount -o remount ,rw /
+mount -o remount,rw /
 kill -9 "$(pidof procServ)" 2>/dev/null >/dev/null
 /etc/init.d/libera-ioc stop
 ./st.cmd
