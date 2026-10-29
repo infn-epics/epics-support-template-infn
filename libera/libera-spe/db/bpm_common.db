@@ -1,0 +1,51 @@
+# Common BPM interface, the same on every Libera template (see ../README.md):
+#   $(BPM):X, :Y, :SUM               scalar position (nm) and sum
+#   $(BPM):X_BUF, :Y_BUF, :SUM_BUF   position buffer, NORD = valid samples
+# Macros:
+#   BPM        common prefix of the BPM
+#   SIG        liberaSignal record of the scalar position (element 0 is used)
+#   BUF        liberaSignal record of the buffer
+#   CX,CY,CSUM component names in SIG/BUF (x/y/sum on spe, X/Y/Sum on ebpm)
+#   NELM       buffer size
+#   BUFDESC    what the buffer holds (turns, bunches, ...)
+# The CP links go through Channel Access: EPICS_CA_MAX_ARRAY_BYTES must cover NELM doubles.
+
+record(ai, "$(BPM):X") {
+	field(DESC, "Position X")
+	field(INP, "$(SIG).$(CX) CP")
+	field(EGU, "nm")
+}
+
+record(ai, "$(BPM):Y") {
+	field(DESC, "Position Y")
+	field(INP, "$(SIG).$(CY) CP")
+	field(EGU, "nm")
+}
+
+record(ai, "$(BPM):SUM") {
+	field(DESC, "Sum")
+	field(INP, "$(SIG).$(CSUM) CP")
+}
+
+record(waveform, "$(BPM):X_BUF") {
+	field(DESC, "X $(BUFDESC)")
+	field(INP, "$(BUF).$(CX) CP")
+	field(FTVL, "DOUBLE")
+	field(NELM, "$(NELM)")
+	field(EGU, "nm")
+}
+
+record(waveform, "$(BPM):Y_BUF") {
+	field(DESC, "Y $(BUFDESC)")
+	field(INP, "$(BUF).$(CY) CP")
+	field(FTVL, "DOUBLE")
+	field(NELM, "$(NELM)")
+	field(EGU, "nm")
+}
+
+record(waveform, "$(BPM):SUM_BUF") {
+	field(DESC, "Sum $(BUFDESC)")
+	field(INP, "$(BUF).$(CSUM) CP")
+	field(FTVL, "DOUBLE")
+	field(NELM, "$(NELM)")
+}

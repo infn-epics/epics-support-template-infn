@@ -2,4 +2,6 @@
 mount -o remount,rw /
 kill -9 "$(pidof procServ)" 2>/dev/null >/dev/null
 /etc/init.d/libera-ioc stop
+# as the vendor startIOC.sh: adc/ddc/tbt signals (and bpm_common.db X_BUF) up to 10000 samples
+export EPICS_CA_MAX_ARRAY_BYTES=5000000
 ./st.cmd

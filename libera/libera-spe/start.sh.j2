@@ -2,4 +2,6 @@
 mount -o remount,rw /
 kill -9 "$(pidof procServ)" 2>/dev/null >/dev/null
 /etc/init.d/libera-ioc stop
+# array PVs and the CP links of bpm_common.db
+export EPICS_CA_MAX_ARRAY_BYTES=5000000
 ./st.cmd

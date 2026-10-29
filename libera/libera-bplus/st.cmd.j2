@@ -46,6 +46,7 @@ dbLoadRecords("db/evrx.db",           "P={{iocprefix}},D=${MCIAPP},MB=evrx2,B=ev
 ## device TYPE {{dev.devtype}} ###
 ## {{dev.name}} ##
 dbLoadRecords("db/raf.db",            "P={{prefix}},D=${MCIAPP},MB=raf{{dev.channel}},B={{dev.name}}")
+dbLoadRecords("db/bpm_common.db",     "BPM={{prefix}}:{{dev.name}},SIG={{prefix}}:{{dev.name}}:sa,BUF={{prefix}}:{{dev.name}}:ddc_synth,CX=X,CY=Y,CSUM=Sum,NELM={{ dev.buf_nelm | default(10000) }},BUFDESC='turn by turn'")
 {%- endfor %}
 
 ## Asyn record for Libera asyn driver

@@ -25,3 +25,10 @@ pattern
 {PORT, DEVICE, P}
 {SA, {{iocprefix}}:SA: ,{{iocprefix}} }
 }
+
+# Common BPM interface: X_BUF/Y_BUF/SUM_BUF (SA history)
+file "bpm_hist.db" {
+pattern
+{P, NSAM}
+{ {{iocprefix}}, {{ buf_nelm | default(1000) }} }
+}

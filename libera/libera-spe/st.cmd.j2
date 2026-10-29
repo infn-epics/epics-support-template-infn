@@ -49,6 +49,7 @@ dbLoadRecords("db/spe.db",                  "P={{iocprefix}},D=${MCIAPP}")
 ## {{dev.name}} ##
 dbLoadRecords("db/rfspe.db",          "D=${MCIAPP},MB=rfspe{{dev.channel}},B={{iocprefix}}:{{dev.name}}")
 dbLoadRecords("db/elinp.db",          "P={{iocprefix}},B={{iocprefix}}:{{dev.name}}")
+dbLoadRecords("db/bpm_common.db",     "BPM={{iocprefix}}:{{dev.name}},SIG={{iocprefix}}:{{dev.name}}:spe,BUF={{iocprefix}}:{{dev.name}}:spe,CX=x,CY=y,CSUM=sum,NELM={{ dev.buf_nelm | default(1024) }},BUFDESC='per bunch'")
 {%- endfor %}
 
 ## Asyn record for Libera asyn driver

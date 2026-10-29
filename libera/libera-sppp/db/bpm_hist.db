@@ -1,0 +1,26 @@
+# Common BPM interface for libera-sppp (see ../README.md): $(P):X, :Y, :SUM already exist
+# in libera_sa.template; the Brilliance has no position buffer, so X_BUF/Y_BUF/SUM_BUF
+# keep the last NSAM SA samples (compress circular buffer: NUSE valid samples, OFF next slot).
+
+record(compress, "$(P):X_BUF") {
+	field(DESC, "X SA history")
+	field(INP, "$(P):X CP")
+	field(ALG, "Circular Buffer")
+	field(NSAM, "$(NSAM)")
+	field(EGU, "nm")
+}
+
+record(compress, "$(P):Y_BUF") {
+	field(DESC, "Y SA history")
+	field(INP, "$(P):Y CP")
+	field(ALG, "Circular Buffer")
+	field(NSAM, "$(NSAM)")
+	field(EGU, "nm")
+}
+
+record(compress, "$(P):SUM_BUF") {
+	field(DESC, "Sum SA history")
+	field(INP, "$(P):SUM CP")
+	field(ALG, "Circular Buffer")
+	field(NSAM, "$(NSAM)")
+}
