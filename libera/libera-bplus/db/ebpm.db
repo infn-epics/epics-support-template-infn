@@ -1,0 +1,19 @@
+record(libera, "$(P):application:custom") 
+{
+    info(MCII,  "mcii://$(D)/application.custom")
+}
+
+record(libera, "$(P):ebpm:app-name") 
+{
+    info(MCII,  "mcii://$(D)/app-name")
+}
+
+record(libera, "$(P):ebpm:version") 
+{
+    info(MCII,  "mcii://$(D)/version")
+}
+
+record(libera, "$(P):sync") 
+{
+    info(MCII,  "mcii://$(D)/application.synchronize_lmt")
+}
