@@ -34,8 +34,13 @@ epicsEnvSet("MCIAPP","libera-ebpm")
 
 dbLoadRecords("db/ebpm.db",           "P={{iocprefix}},D=${MCIAPP}")
 
+## gdx1 / tim2 are not fitted on every unit: set gdx: false / tim: false on the ioc to skip them
+{%- if gdx | default(true) %}
 dbLoadRecords("db/gdx.db",            "P={{iocprefix}},D=${MCIAPP},MB=gdx1,B=gdx")
+{%- endif %}
+{%- if tim | default(true) %}
 dbLoadRecords("db/tim.db",            "P={{iocprefix}},D=${MCIAPP},MB=tim2,B=tim")
+{%- endif %}
 dbLoadRecords("db/evrx.db",           "P={{iocprefix}},D=${MCIAPP},MB=evrx2,B=evrx")
 
 {%- for dev in devices %}
@@ -71,9 +76,13 @@ dbLoadRecords("db/platform.db",       "P={{iocprefix}},D=libera-platform")
 
 dbLoadRecords("db/os_sensors.db",     "P={{iocprefix}},D=libera-platform,MB=os,B=os")
 dbLoadRecords("db/icb_sensors.db",    "P={{iocprefix}},D=libera-platform,MB=icb0,B=icb")
+{%- if gdx | default(true) %}
 dbLoadRecords("db/gdx_sensors.db",    "P={{iocprefix}},D=libera-platform,MB=gdx1,B=gdx")
+{%- endif %}
 dbLoadRecords("db/evrx_sensors.db",   "P={{iocprefix}},D=libera-platform,MB=evrx2,B=evrx")
+{%- if tim | default(true) %}
 dbLoadRecords("db/tim_sensors.db",    "P={{iocprefix}},D=libera-platform,MB=tim2,B=tim")
+{%- endif %}
 
 {%- for dev in devices %}
 {%- set prefix = iocprefix %}

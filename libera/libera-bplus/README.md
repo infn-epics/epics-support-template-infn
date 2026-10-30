@@ -12,6 +12,10 @@ Not to be confused with [`../libera-spe`](../libera-spe) (Single Pass E,
 - one `raf.db` per entry in `devices`, board `raf<channel>` (slots 3..6)
 - platform sensors (os, icb0, gdx1, evrx2, tim2, and `raf_sensors.db` per device)
 
+`gdx1` and `tim2` are not fitted on every unit (check with
+`/opt/libera/bin/libera-ireg dump -l 1 boards`): set `gdx: false` and/or
+`tim: false` on the ioc to skip their records (default: loaded).
+
 PV names: `<iocprefix>:<dev.name>:...` for each BPM (a device-level `prefix`
 overrides `iocprefix`), `<iocprefix>:gdx|tim|evrx:...` for the shared boards.
 
